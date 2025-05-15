@@ -1,3 +1,4 @@
+import { useState, useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, Link } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import { ShipsProvider } from './contexts/ShipsContext';
@@ -12,7 +13,6 @@ import JobsPage from './pages/JobsPage';
 import ShipForm from './components/Ships/ShipForm';
 import ComponentForm from './components/Components/ComponentForm';
 import JobForm from './components/Jobs/JobForm';
-import { useContext } from 'react';
 import { AuthContext } from './contexts/AuthContext';
 import { hasAccess } from './utils/roleUtils';
 import './styles/main.css';
@@ -27,16 +27,24 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
   return children;
 };
 
-// New Nav component to handle navigation and logout
 const Nav = () => {
-  const { logout } = useContext(AuthContext); // Move useContext here
+  const { logout } = useContext(AuthContext);
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const toggleNav = () => setIsNavOpen(!isNavOpen);
+
   return (
-    <nav>
-      <Link to="/dashboard">Dashboard</Link>
-      <Link to="/ships">Ships</Link>
-      <Link to="/jobs">Jobs</Link>
-      <button onClick={logout}>Logout</button>
-    </nav>
+    <>
+      <button className="nav-toggle" onClick={toggleNav}>
+        {isNavOpen ? '✕' : '☰'}
+      </button>
+      <nav className={isNavOpen ? 'open' : ''}>
+        <Link to="/dashboard" onClick={() => setIsNavOpen(false)}>Dashboard</Link>
+        <Link to="/ships" onClick={() => setIsNavOpen(false)}>Ships</Link>
+        <Link to="/jobs" onClick={() => setIsNavOpen(false)}>Jobs</Link>
+        <button onClick={() => { logout(); setIsNavOpen(false); }}>Logout</button>
+      </nav>
+    </>
   );
 };
 
@@ -51,7 +59,7 @@ function App() {
             <NotificationsProvider>
               <Router>
                 <div className="app">
-                  <Nav /> {/* Use Nav component */}
+                  <Nav />
                   <main>
                     <Routes>
                       <Route path="/login" element={<LoginPage />} />
@@ -71,7 +79,7 @@ function App() {
                           </ProtectedRoute>
                         }
                       />
-                      <Route hướng dẫn
+                      <Route
                         path="/ships/new"
                         element={
                           <ProtectedRoute allowedRoles={['Admin']}>

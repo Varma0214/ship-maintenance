@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'; // Removed useEffect
+import { useState, useContext } from 'react';
 import { ComponentsContext } from '../../contexts/ComponentsContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import '../../styles/main.css';
@@ -10,12 +10,14 @@ const ComponentForm = () => {
   const isEdit = !!componentId;
   const component = isEdit ? components.find(c => c.id === componentId) : {};
 
+  console.log('shipId from useParams:', shipId);
+
   const [formData, setFormData] = useState({
     name: component?.name || '',
     serialNumber: component?.serialNumber || '',
     installDate: component?.installDate || '',
     lastMaintenanceDate: component?.lastMaintenanceDate || '',
-    shipId,
+    shipId: shipId || '', 
   });
   const [error, setError] = useState('');
 
@@ -27,6 +29,10 @@ const ComponentForm = () => {
     e.preventDefault();
     if (!formData.name || !formData.serialNumber || !formData.installDate) {
       setError('Please fill in all required fields');
+      return;
+    }
+    if (!shipId) {
+      setError('Invalid ship ID. Please try again from the ship’s detail page.');
       return;
     }
     if (isEdit) {

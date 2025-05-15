@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'; // Removed useEffect
+import { useState, useContext } from 'react';
 import { JobsContext } from '../../contexts/JobsContext';
 import { ComponentsContext } from '../../contexts/ComponentsContext';
 import { ShipsContext } from '../../contexts/ShipsContext';
@@ -41,7 +41,7 @@ const JobForm = () => {
       updateJob(jobId, formData);
       addNotification(`Job ${formData.type} updated for component ${formData.componentId}`);
     } else {
-      addJob(formData); // Removed unused newJob
+      addJob(formData); 
       addNotification(`New job ${formData.type} created for component ${formData.componentId}`);
     }
     navigate('/jobs');

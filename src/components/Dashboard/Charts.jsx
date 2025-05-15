@@ -6,7 +6,7 @@ const Charts = () => {
   const { jobs } = useContext(JobsContext);
   const statuses = ['Open', 'In Progress', 'Completed'];
   const counts = statuses.map(status => jobs.filter(j => j.status === status).length);
-  const maxCount = Math.max(...counts, 1); // Avoid division by zero
+  const maxCount = Math.max(...counts, 1); 
 
   return (
     <div className="charts">

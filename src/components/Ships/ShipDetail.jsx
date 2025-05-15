@@ -10,7 +10,7 @@ const ShipDetail = () => {
   const { jobs } = useContext(JobsContext);
   const { id } = useParams();
   const ship = ships.find(s => s.id === id);
-  const shipJobs = jobs.filter(j => j.shipId === id);
+  const shipJobs = jobs.filter(j => j.shipId === id); 
 
   if (!ship) return <div>Ship not found</div>;
 
