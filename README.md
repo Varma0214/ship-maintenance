@@ -8,34 +8,29 @@ Follow the steps below to set up and run the project locally.
 
 ### 📦 Clone the Repository
 
-```bash
+```
 git clone https://github.com/Varma0214/ship-maintenance.git
 cd ship-maintenance
-📥 Install Dependencies
-bash
-Copy
-Edit
+```
+Install Dependencies
+```
 npm install
-▶️ Start the Application
-bash
-Copy
-Edit
+```
+Start the Application
+```
 npm start
-🔐 Test Credentials
-Use the following test credentials to log in:
+```
+Test Credentials
+```Use the following test credentials to log in:
 
-👤 Admin
-📧 Email: admin@entnt.in
-🔑 Password: admin123
+Admin
+Email: admin@entnt.in
+Password: admin123
 
-🕵️ Inspector
-📧 Email: inspector@entnt.in
-🔑 Password: inspect123
+Inspector
+Email: inspector@entnt.in
+Password: inspect123
 
-🛠️ Engineer
-📧 Email: engineer@entnt.in
-🔑 Password: engine123
-
-
-
-  
+Engineer
+Email: engineer@entnt.in
+Password: engine123
