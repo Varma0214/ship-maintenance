@@ -7,13 +7,14 @@ A frontend-only React application for managing ship maintenance operations, feat
    ```bash
    git clone https://github.com/Varma0214/ship-maintenance.git
    cd ship-maintenance
-2.Install Dependencies:
-  npm install
-3.Start the Application:
-  npm start
-4.Test Credentials
-  Admin: admin@entnt.in / admin123
-  Inspector: inspector@entnt.in / inspect123
-  Engineer: engineer@entnt.in / engine123
-5.
+   2.Install Dependencies:
+   bash npm install
+   Start the Application:
+   bash npm start
+   Test Credentials
+   Admin: admin@entnt.in / admin123
+   Inspector: inspector@entnt.in / inspect123
+   Engineer: engineer@entnt.in / engine123
+
+
   
